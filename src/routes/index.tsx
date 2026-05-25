@@ -291,10 +291,14 @@ function FeatureImage() {
 
 function Services() {
   return (
-    <section id="services" className="py-24 bg-surface/40 border-y border-hairline">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="relative py-24 border-y border-hairline overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={vcdsBg2} alt="" aria-hidden className="w-full h-full object-cover opacity-15" loading="lazy" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--background),color-mix(in_oklab,var(--background)_80%,transparent),var(--background))]" />
+      </div>
+      <div className="max-w-6xl mx-auto px-6 relative">
         <SectionHeader eyebrow="Leistungen" title="Was wir für Ihr Fahrzeug tun." />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 ring-1 ring-white/5 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--hairline-strong)] ring-1 ring-hairline mt-12">
           {services.map((s) => {
             const Icon = s.icon;
             return (
