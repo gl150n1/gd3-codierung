@@ -180,6 +180,7 @@ function Navigation() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <span className="text-[10px] font-mono text-muted-foreground uppercase hidden sm:inline">
             Würzburg DE
           </span>
