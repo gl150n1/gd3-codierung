@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImage from "@/assets/diagnostic-hero.jpg";
+import logoImage from "@/assets/gd3-logo.jpeg";
 import {
   Activity,
   Wrench,
