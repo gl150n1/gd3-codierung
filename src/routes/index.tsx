@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImage from "@/assets/diagnostic-hero.jpg";
 import logoImage from "@/assets/gd3-logo.jpeg";
+import vcdsBg1 from "@/assets/vcds-bg-1.jpg";
+import vcdsBg2 from "@/assets/vcds-bg-2.jpg";
 import {
   Activity,
   Wrench,
@@ -17,6 +19,8 @@ import {
   Mail,
   ChevronDown,
   Check,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
