@@ -112,6 +112,13 @@
   --overlay-scrim: oklch(0.995 0 0 / 0.82);
 }
 
+@theme inline {
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-soft: var(--accent-blue-soft);
+}
+
+html, body { transition: background-color 0.3s ease, color 0.3s ease; }
+
 @layer base {
   * {
     border-color: var(--color-border);
