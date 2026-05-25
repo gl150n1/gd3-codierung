@@ -60,8 +60,8 @@ export const Route = createFileRoute("/")({
             addressLocality: "Würzburg",
             addressCountry: "DE",
           },
-          telephone: "+49 000 0000000",
-          email: "hallo@gd3-diagnose.de",
+          telephone: "+49 1573 4685334",
+          email: "gd3.codierung@gmail.com",
         }),
       },
     ],
@@ -428,7 +428,7 @@ function Contact() {
     const car = String(data.get("car") || "").trim();
     const message = String(data.get("message") || "").trim();
     const text = `Hallo GD3,%0A%0AName: ${encodeURIComponent(name)}%0AFahrzeug: ${encodeURIComponent(car)}%0A%0A${encodeURIComponent(message)}`;
-    window.open(`https://wa.me/4900000000000?text=${text}`, "_blank");
+    window.open(`https://wa.me/4915734685334?text=${text}`, "_blank");
     setSent(true);
     form.reset();
   }
@@ -443,7 +443,7 @@ function Contact() {
             wünschen — ich melde mich meist innerhalb weniger Stunden zurück.
           </p>
           <div className="flex flex-col gap-4">
-            <a href="https://wa.me/4900000000000" target="_blank" rel="noreferrer"
+            <a href="https://wa.me/4915734685334" target="_blank" rel="noreferrer"
               className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10 hover:ring-accent-blue/40 transition">
               <MessageCircleMore className="size-5 text-accent-blue" />
               <div className="flex flex-col">
@@ -451,20 +451,20 @@ function Contact() {
                 <span className="text-sm font-medium">Sofort schreiben</span>
               </div>
             </a>
-            <a href="tel:+4900000000000"
+            <a href="tel:+4915734685334"
               className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10 hover:ring-accent-blue/40 transition">
               <Phone className="size-5 text-accent-blue" />
               <div className="flex flex-col">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Telefon</span>
-                <span className="text-sm font-medium">+49 000 0000000</span>
+                <span className="text-sm font-medium">+49 1573 4685334</span>
               </div>
             </a>
-            <a href="mailto:hallo@gd3-diagnose.de"
+            <a href="mailto:gd3.codierung@gmail.com"
               className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10 hover:ring-accent-blue/40 transition">
               <Mail className="size-5 text-accent-blue" />
               <div className="flex flex-col">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">E-Mail</span>
-                <span className="text-sm font-medium">hallo@gd3-diagnose.de</span>
+                <span className="text-sm font-medium">gd3.codierung@gmail.com</span>
               </div>
             </a>
             <div className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10">
@@ -540,8 +540,8 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-3">
             <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Kontakt</span>
-            <a href="mailto:hallo@gd3-diagnose.de" className="text-sm hover:text-accent-blue transition-colors">hallo@gd3-diagnose.de</a>
-            <a href="tel:+4900000000000" className="text-sm hover:text-accent-blue transition-colors">+49 000 0000000</a>
+            <a href="mailto:gd3.codierung@gmail.com" className="text-sm hover:text-accent-blue transition-colors">gd3.codierung@gmail.com</a>
+            <a href="tel:+4915734685334" className="text-sm hover:text-accent-blue transition-colors">+49 1573 4685334</a>
             <span className="text-sm text-muted-foreground">Würzburg, DE</span>
           </div>
           <div className="flex flex-col gap-3">
