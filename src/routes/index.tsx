@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import heroImage from "@/assets/diagnostic-hero.jpg";
+import logoImage from "@/assets/gd3-logo.jpeg";
 import {
   Activity,
   Wrench,
@@ -156,7 +157,8 @@ function Navigation() {
     <nav className="sticky top-0 z-50 py-4 px-6 border-b border-hairline bg-background/80 backdrop-blur-md">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <a href="#top" className="font-mono text-sm tracking-tighter font-medium">
+          <a href="#top" className="flex items-center gap-2.5 font-mono text-sm tracking-tighter font-medium">
+            <img src={logoImage} alt="GD3 Logo" className="size-8 object-contain" />
             GD3 <span className="text-accent-blue">//</span> DIAGNOSE
           </a>
           <div className="hidden md:flex items-center gap-6">
@@ -478,9 +480,12 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between gap-12">
           <div className="flex flex-col gap-4 max-w-[35ch]">
-            <span className="font-mono text-sm font-medium">
-              GD3 <span className="text-accent-blue">//</span> FAHRZEUGTECHNIK
-            </span>
+            <div className="flex items-center gap-2.5">
+              <img src={logoImage} alt="GD3 Logo" className="size-10 object-contain" />
+              <span className="font-mono text-sm font-medium">
+                GD3 <span className="text-accent-blue">//</span> FAHRZEUGTECHNIK
+              </span>
+            </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
               VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und
               Seat in Würzburg & Umgebung.
