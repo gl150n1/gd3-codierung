@@ -71,6 +71,13 @@
   --ring: oklch(0.705 0.015 286);
 
   --signal: oklch(0.78 0.18 155); /* emerald system-ready */
+  --accent-blue: oklch(0.72 0.13 240); /* subtle steel blue accent */
+  --accent-blue-soft: oklch(0.55 0.12 240);
+}
+
+@theme inline {
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-blue-soft: var(--accent-blue-soft);
 }
 
 .dark {

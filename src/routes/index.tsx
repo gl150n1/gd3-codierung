@@ -1,24 +1,64 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import heroImage from "@/assets/diagnostic-hero.jpg";
+import {
+  Activity,
+  Wrench,
+  Sparkles,
+  Cpu,
+  AlertCircle,
+  Car,
+  Shield,
+  Clock,
+  MapPin,
+  MessageCircleMore,
+  Phone,
+  Mail,
+  ChevronDown,
+  Check,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "GD3 — Fahrzeugdiagnose & Softwarekonfiguration in Würzburg" },
+      { title: "VCDS Coding & Auto Programmierung Würzburg — GD3 Diagnose" },
       {
         name: "description",
         content:
-          "GD3 Würzburg: VCDS Diagnose, Fehlercodeanalyse, Freischaltung versteckter Funktionen, Infotainment-Individualisierung und Software-Konfiguration. TÜV-konform.",
+          "VCDS Coding, Diagnose & Freischaltung versteckter Funktionen in Würzburg. Spezialist für VW, Audi, Skoda, Seat. Retrofit-Codierung, Fehleranalyse, faire Preise.",
       },
-      { property: "og:title", content: "GD3 — Fahrzeugdiagnose Würzburg" },
+      { name: "keywords", content: "VCDS Würzburg, Auto coding Würzburg, Audi coding Würzburg, VW Diagnose Würzburg, Skoda Codierung, Seat Codierung, Retrofit Würzburg" },
+      { property: "og:title", content: "VCDS Coding & Auto Programmierung Würzburg — GD3" },
       {
         property: "og:description",
         content:
-          "Professionelle Fahrzeugdiagnose und Softwarekonfiguration in Würzburg — VCDS, Codierung, Infotainment, Echtzeit-Telemetrie.",
+          "Professionelle Fahrzeugdiagnose, VCDS Codierung und Feature-Freischaltung für VW, Audi, Skoda, Seat in Würzburg.",
       },
       { property: "og:image", content: heroImage },
+      { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: heroImage },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AutoRepair",
+          name: "GD3 Fahrzeugdiagnose",
+          description:
+            "VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und Seat in Würzburg.",
+          areaServed: "Würzburg",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Würzburg",
+            addressCountry: "DE",
+          },
+          telephone: "+49 000 0000000",
+          email: "hallo@gd3-diagnose.de",
+        }),
+      },
     ],
   }),
   component: Index,
@@ -27,259 +67,457 @@ export const Route = createFileRoute("/")({
 const services = [
   {
     code: "01 / VCDS",
+    icon: Activity,
     title: "VCDS Diagnose",
-    body: "Tiefgreifende Systemanalyse für alle Marken der VAG-Gruppe. Auslesen und Löschen von Fehlerspeichern auf Herstellerniveau.",
+    body: "Tiefgreifende Systemanalyse über VCDS auf Herstellerniveau — vollständiges Auslesen aller Steuergeräte.",
   },
   {
-    code: "02 / ANALYSIS",
-    title: "Fehlercodeanalyse",
-    body: "Logische Auswertung komplexer Fehlerszenarien zur gezielten Instandsetzung — ohne unnötigen Teiletausch.",
+    code: "02 / CODING",
+    icon: Wrench,
+    title: "Coding & Adaptationen",
+    body: "Präzise Anpassung von Steuergeräten an Ihre Wünsche und nach Hardware-Nachrüstungen.",
   },
   {
-    code: "03 / CODES",
-    title: "Funktionsfreischaltung",
-    body: "Aktivierung versteckter Komfortfunktionen wie Zeigerausschlag, Abbiegelicht oder Parkhilfe-Visualisierung.",
+    code: "03 / HIDDEN",
+    icon: Sparkles,
+    title: "Hidden Feature Aktivierung",
+    body: "Freischaltung versteckter Komfortfunktionen: Abbiegelicht, Coming-Home, Spurhalter und mehr.",
   },
   {
-    code: "04 / UIX",
-    title: "Infotainment-Modding",
-    body: "Individuelle Anpassung von Startlogos, Skins und Funktionen Ihres Navigations- und Mediensystems.",
+    code: "04 / RETROFIT",
+    icon: Cpu,
+    title: "Retrofit Programmierung",
+    body: "Einbindung nachgerüsteter Hardware: Tempomat, Park-Sensoren, Multifunktionslenkrad, Apple CarPlay.",
   },
   {
-    code: "05 / CONFIG",
-    title: "Software-Konfiguration",
-    body: "Präzise Einstellung von Steuergeräten nach Hardware-Nachrüstungen oder zur Optimierung bestehender Systeme.",
+    code: "05 / ANALYSIS",
+    icon: AlertCircle,
+    title: "Fehlercode-Analyse",
+    body: "Logische Auswertung komplexer Fehlerspeicher zur gezielten Instandsetzung — ohne unnötigen Teiletausch.",
   },
   {
-    code: "06 / TELEMETRY",
-    title: "Echtzeit-Auswertung",
-    body: "Aufzeichnung und Analyse von Live-Parametern während der Fahrt zur Prüfung der Motorperformance.",
+    code: "06 / VAG",
+    icon: Car,
+    title: "VW · Audi · Skoda · Seat",
+    body: "Spezialisiert auf die gesamte Volkswagen-Gruppe — von älteren MQB- bis hin zu aktuellen MEB-Plattformen.",
+  },
+];
+
+const reasons = [
+  { title: "Professionelle Tools", body: "Originale VCDS-Lizenz, ODIS-fähige Hardware und kalibrierte Messtechnik." },
+  { title: "Faire Preise", body: "Transparente Festpreise pro Codierung — keine versteckten Kosten." },
+  { title: "Schnelle Termine", body: "Meist innerhalb von 48 Stunden vor Ort in Würzburg." },
+  { title: "Lokale Expertise", body: "Persönlicher Ansprechpartner direkt in Unterfranken." },
+  { title: "Klare Kommunikation", body: "Verständliche Erklärung jeder Änderung — vor und nach der Arbeit." },
+  { title: "Garantiert sicher", body: "Vollständiges Backup vor jeder Codierung. Reversibel und TÜV-konform." },
+];
+
+const faqs = [
+  {
+    q: "Welche Fahrzeuge unterstützt ihr?",
+    a: "Wir sind spezialisiert auf die Volkswagen-Gruppe: VW, Audi, Skoda und Seat — alle Modelle ab Baujahr 2005 inklusive aktueller MEB-Elektrofahrzeuge.",
+  },
+  {
+    q: "Wie lange dauert eine Codierung?",
+    a: "Einzelne Feature-Freischaltungen dauern meist 15–30 Minuten. Komplexe Retrofit-Codierungen oder Komplettauslesungen 1–2 Stunden.",
+  },
+  {
+    q: "Ist Coding sicher für mein Fahrzeug?",
+    a: "Ja. Vor jeder Änderung erstellen wir ein vollständiges Backup der Steuergeräte. Alle Anpassungen sind reversibel und bleiben innerhalb der Herstellerparameter.",
+  },
+  {
+    q: "Brauche ich einen Termin?",
+    a: "Ja, bitte. So können wir uns die nötige Zeit für Ihr Fahrzeug nehmen. Termine vereinbaren wir am schnellsten via WhatsApp.",
+  },
+  {
+    q: "Verliere ich die Garantie?",
+    a: "Reine Software-Codierungen innerhalb der Herstellerparameter sind unkritisch. Bei Retrofit-Arbeiten beraten wir Sie individuell zu Ihrem Modell.",
   },
 ];
 
 function Index() {
   return (
     <div className="bg-background text-foreground font-sans">
-      {/* Navigation */}
-      <nav className="py-6 px-6 border-b border-hairline">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <span className="font-mono text-sm tracking-tighter font-medium">
-              GD3 // DIAGNOSE
+      <Navigation />
+      <Hero />
+      <FeatureImage />
+      <Services />
+      <About />
+      <WhyChooseMe />
+      <FAQ />
+      <Contact />
+      <Footer />
+    </div>
+  );
+}
+
+function Navigation() {
+  return (
+    <nav className="sticky top-0 z-50 py-4 px-6 border-b border-hairline bg-background/80 backdrop-blur-md">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-8">
+          <a href="#top" className="font-mono text-sm tracking-tighter font-medium">
+            GD3 <span className="text-accent-blue">//</span> DIAGNOSE
+          </a>
+          <div className="hidden md:flex items-center gap-6">
+            {[
+              ["Services", "#services"],
+              ["Über mich", "#about"],
+              ["Vorteile", "#why"],
+              ["FAQ", "#faq"],
+              ["Kontakt", "#contact"],
+            ].map(([label, href]) => (
+              <a key={href} href={href} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-[10px] font-mono text-muted-foreground uppercase hidden sm:inline">
+            Würzburg DE
+          </span>
+          <div className="size-1.5 rounded-full bg-[var(--signal)] shadow-[0_0_8px_color-mix(in_oklab,var(--signal)_60%,transparent)]" />
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <section id="top" className="relative pt-24 pb-20 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--accent-blue)_8%,transparent),transparent_60%)] pointer-events-none" />
+      <div className="max-w-6xl mx-auto px-6 relative">
+        <div className="flex flex-col items-start gap-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface ring-1 ring-white/10 rounded-full">
+            <div className="size-1.5 rounded-full bg-[var(--signal)] animate-pulse" />
+            <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
+              VCDS · VAG-Spezialist · Würzburg
             </span>
-            <div className="hidden md:flex items-center gap-6">
-              <a href="#services" className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                Services
-              </a>
-              <a href="#technik" className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                Technik
-              </a>
-              <a href="#standort" className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                Standort
-              </a>
-            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <span className="text-[10px] font-mono text-muted-foreground uppercase hidden sm:inline">
-              Würzburg DE // 49.7913° N
-            </span>
-            <div className="size-1.5 rounded-full bg-[var(--signal)] shadow-[0_0_8px_color-mix(in_oklab,var(--signal)_60%,transparent)]" />
+          <h1 className="text-5xl md:text-7xl font-semibold leading-[1.05] text-balance max-w-[22ch] tracking-tight">
+            Professionelles VCDS Coding &{" "}
+            <span className="text-accent-blue">Auto Programmierung</span>{" "}
+            <span className="text-muted-foreground">in Würzburg.</span>
+          </h1>
+          <p className="text-muted-foreground text-lg max-w-[60ch] text-pretty">
+            Diagnose, Codierung und Freischaltung versteckter Funktionen für
+            VW, Audi, Skoda und Seat. Persönlich, transparent und mit
+            originaler VCDS-Hardware.
+          </p>
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href="#contact"
+              className="bg-foreground text-background px-5 py-3 rounded-sm font-medium text-sm hover:bg-zinc-200 transition-colors flex items-center gap-2"
+            >
+              Termin buchen
+              <span className="text-muted-foreground">→</span>
+            </a>
+            <a
+              href="#services"
+              className="bg-surface text-foreground px-5 py-3 rounded-sm font-medium text-sm ring-1 ring-white/10 hover:bg-surface-elevated transition-colors"
+            >
+              Leistungen ansehen
+            </a>
           </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="py-24 bg-background">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col items-start gap-8">
-            <div className="inline-flex items-center gap-2 px-2 py-1 bg-surface ring-1 ring-white/10 rounded">
-              <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-                Status: System Ready
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-semibold leading-tight text-balance max-w-[20ch]">
-              Präzision in jedem{" "}
-              <span className="text-muted-foreground">Datenpunkt.</span>
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-[56ch] text-pretty">
-              Professionelle Fahrzeugdiagnose und Softwarekonfiguration in
-              Würzburg. Wir schöpfen das volle Potenzial Ihres Fahrzeugs aus —
-              sicher, legal und TÜV-konform.
-            </p>
-            <div className="flex items-center gap-4 pt-4">
-              <a
-                href="#standort"
-                className="bg-foreground text-background px-5 py-2.5 rounded-sm font-medium text-sm ring-1 ring-foreground hover:bg-zinc-200 transition-colors flex items-center gap-2"
-              >
-                Anfrage senden
-                <span className="text-muted-foreground">→</span>
-              </a>
-              <a
-                href="#services"
-                className="bg-surface text-foreground px-5 py-2.5 rounded-sm font-medium text-sm ring-1 ring-white/10 hover:bg-surface-elevated transition-colors"
-              >
-                Leistungskatalog
-              </a>
-            </div>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-6 text-xs font-mono text-muted-foreground uppercase tracking-widest">
+            <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Original VCDS</span>
+            <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Backup vor jeder Codierung</span>
+            <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Termine innerhalb 48h</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* Feature image */}
-      <section className="pb-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="w-full aspect-[21/9] bg-surface outline outline-1 -outline-offset-1 outline-white/5 rounded-[min(1vw,12px)] overflow-hidden">
-            <img
-              src={heroImage}
-              alt="Diagnose-Interface zeigt Echtzeit-Sensordaten eines Fahrzeugs"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
+function FeatureImage() {
+  return (
+    <section className="pb-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="w-full aspect-[21/9] bg-surface outline outline-1 -outline-offset-1 outline-white/5 rounded-[min(1vw,12px)] overflow-hidden">
+          <img
+            src={heroImage}
+            alt="Diagnose-Interface mit Echtzeit-Sensordaten eines VW/Audi Fahrzeugs"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* Services */}
-      <section
-        id="services"
-        className="py-24 bg-surface/50 border-y border-hairline"
-      >
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col gap-12">
-            <div className="flex flex-col gap-2">
-              <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-                Expertise
-              </span>
-              <h2 className="text-3xl font-medium text-balance max-w-[35ch]">
-                Unsere Kernkompetenzen
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 ring-1 ring-white/5">
-              {services.map((s) => (
-                <article
-                  key={s.code}
-                  className="bg-background p-8 flex flex-col gap-4"
-                >
+function Services() {
+  return (
+    <section id="services" className="py-24 bg-surface/40 border-y border-hairline">
+      <div className="max-w-6xl mx-auto px-6">
+        <SectionHeader eyebrow="Leistungen" title="Was wir für Ihr Fahrzeug tun." />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 ring-1 ring-white/5 mt-12">
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <article key={s.code} className="group bg-background p-8 flex flex-col gap-4 hover:bg-surface transition-colors">
+                <div className="flex items-center justify-between">
+                  <div className="size-10 rounded-md bg-surface ring-1 ring-white/10 flex items-center justify-center text-accent-blue group-hover:text-foreground transition-colors">
+                    <Icon className="size-4" />
+                  </div>
                   <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-tighter">
                     {s.code}
                   </span>
-                  <h3 className="text-xl font-medium">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground text-pretty leading-relaxed">
-                    {s.body}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust */}
-      <section id="technik" className="py-24">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-16 items-center">
-          <div className="flex-1">
-            <div className="flex flex-col gap-6">
-              <h2 className="text-3xl font-medium text-balance">
-                Gesetzlich sicher.
-                <br />
-                TÜV-konform.
-              </h2>
-              <p className="text-muted-foreground max-w-[48ch] text-pretty">
-                Alle Modifikationen und Diagnosen erfolgen unter strikter
-                Einhaltung der geltenden Gesetze und Herstellerrichtlinien. Wir
-                garantieren professionelle Arbeit ohne Garantieverlust.
-              </p>
-              <div className="flex items-center gap-8 py-4">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                    Prüfung
-                  </span>
-                  <span className="text-sm font-medium">TÜV-konform</span>
                 </div>
-                <div className="w-px h-8 bg-surface-elevated" />
-                <div className="flex flex-col gap-1">
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                    Region
-                  </span>
-                  <span className="text-sm font-medium">Würzburg & Bayern</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/3 aspect-square bg-surface rounded-[min(1vw,12px)] outline outline-1 -outline-offset-1 outline-white/5 flex flex-col items-center justify-center p-12 text-center">
-            <div className="size-24 rounded-full border-2 border-surface-elevated border-t-muted-foreground flex items-center justify-center mb-6">
-              <span className="font-mono text-xl font-medium italic">GD3</span>
-            </div>
-            <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
-              Zertifizierte Prüfung
-            </span>
-            <p className="text-xs text-muted-foreground mt-2">
-              System-ID: 993-AUT-2024
-            </p>
-          </div>
+                <h3 className="text-xl font-medium">{s.title}</h3>
+                <p className="text-sm text-muted-foreground text-pretty leading-relaxed">{s.body}</p>
+              </article>
+            );
+          })}
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
 
-      {/* Footer */}
-      <footer
-        id="standort"
-        className="py-24 bg-background border-t border-hairline"
-      >
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row justify-between gap-16">
-            <div className="flex flex-col gap-6 max-w-[35ch]">
-              <span className="font-mono text-sm font-medium">
-                GD3 FAHRZEUGTECHNIK
-              </span>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Ihr Partner für präzise Fahrzeugdiagnostik in Unterfranken. Wir
-                verbinden Ingenieurskunst mit moderner Softwaretechnik.
-              </p>
+function About() {
+  return (
+    <section id="about" className="py-24">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+        <div className="flex flex-col gap-6">
+          <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">Über GD3</span>
+          <h2 className="text-3xl md:text-4xl font-medium text-balance leading-tight">
+            Leidenschaft für Autos. <br />
+            <span className="text-muted-foreground">Präzision in der Technik.</span>
+          </h2>
+          <p className="text-muted-foreground text-pretty leading-relaxed">
+            GD3 ist Ihr lokaler Spezialist für VCDS Coding und
+            Fahrzeugprogrammierung in Würzburg. Aus Leidenschaft für
+            VW- und Audi-Technik entstanden, biete ich persönlichen,
+            ehrlichen Service ohne Werkstattgrößen-Aufschlag.
+          </p>
+          <p className="text-muted-foreground text-pretty leading-relaxed">
+            Jedes Fahrzeug bekommt die Zeit, die es braucht. Sie wissen
+            vorher genau, was passiert — und nachher genau, was geändert wurde.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-px bg-white/10 ring-1 ring-white/5 rounded-[min(1vw,12px)] overflow-hidden">
+          {[
+            ["500+", "Codierungen"],
+            ["8 J.", "VAG-Erfahrung"],
+            ["48h", "Reaktionszeit"],
+            ["100%", "Backup-Garantie"],
+          ].map(([num, label]) => (
+            <div key={label} className="bg-background p-8 flex flex-col gap-2">
+              <span className="text-3xl font-medium">{num}</span>
+              <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">{label}</span>
             </div>
-            <div className="flex flex-col gap-6">
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Kontakt
-              </span>
-              <div className="flex flex-col gap-3">
-                <a
-                  href="mailto:hallo@gd3-diagnose.de"
-                  className="text-lg font-medium hover:text-muted-foreground transition-colors"
-                >
-                  hallo@gd3-diagnose.de
-                </a>
-                <span className="text-sm text-muted-foreground">
-                  Würzburg, Deutschland
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyChooseMe() {
+  return (
+    <section id="why" className="py-24 bg-surface/40 border-y border-hairline">
+      <div className="max-w-6xl mx-auto px-6">
+        <SectionHeader eyebrow="Warum GD3" title="Sechs Gründe, die für sich sprechen." />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          {reasons.map((r, i) => (
+            <div key={r.title} className="bg-background p-6 rounded-[min(1vw,12px)] ring-1 ring-white/5 flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-[10px] text-accent-blue uppercase tracking-widest">
+                  / 0{i + 1}
                 </span>
               </div>
+              <h3 className="text-base font-medium">{r.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{r.body}</p>
             </div>
-            <div className="flex flex-col gap-6">
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-                Rechtliches
-              </span>
-              <div className="flex flex-col gap-2">
-                <a href="#" className="text-xs text-muted-foreground hover:text-foreground">
-                  Impressum
-                </a>
-                <a href="#" className="text-xs text-muted-foreground hover:text-foreground">
-                  Datenschutz
-                </a>
-                <a href="#" className="text-xs text-muted-foreground hover:text-foreground">
-                  AGB
-                </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section id="faq" className="py-24">
+      <div className="max-w-4xl mx-auto px-6">
+        <SectionHeader eyebrow="FAQ" title="Häufig gestellte Fragen." />
+        <div className="flex flex-col mt-12 ring-1 ring-white/10 rounded-[min(1vw,12px)] overflow-hidden">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={f.q} className="border-b border-hairline last:border-b-0 bg-surface/30">
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-surface transition-colors"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-medium text-base">{f.q}</span>
+                  <ChevronDown className={`size-4 text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed text-pretty">
+                    {f.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  const [sent, setSent] = useState(false);
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const car = String(data.get("car") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    const text = `Hallo GD3,%0A%0AName: ${encodeURIComponent(name)}%0AFahrzeug: ${encodeURIComponent(car)}%0A%0A${encodeURIComponent(message)}`;
+    window.open(`https://wa.me/4900000000000?text=${text}`, "_blank");
+    setSent(true);
+    form.reset();
+  }
+
+  return (
+    <section id="contact" className="py-24 bg-surface/40 border-y border-hairline">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+        <div className="flex flex-col gap-8">
+          <SectionHeader eyebrow="Kontakt" title="Termin anfragen." />
+          <p className="text-muted-foreground text-pretty leading-relaxed max-w-[48ch]">
+            Schreiben Sie kurz, welches Fahrzeug Sie fahren und was Sie sich
+            wünschen — ich melde mich meist innerhalb weniger Stunden zurück.
+          </p>
+          <div className="flex flex-col gap-4">
+            <a href="https://wa.me/4900000000000" target="_blank" rel="noreferrer"
+              className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10 hover:ring-accent-blue/40 transition">
+              <MessageCircleMore className="size-5 text-accent-blue" />
+              <div className="flex flex-col">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">WhatsApp</span>
+                <span className="text-sm font-medium">Sofort schreiben</span>
+              </div>
+            </a>
+            <a href="tel:+4900000000000"
+              className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10 hover:ring-accent-blue/40 transition">
+              <Phone className="size-5 text-accent-blue" />
+              <div className="flex flex-col">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Telefon</span>
+                <span className="text-sm font-medium">+49 000 0000000</span>
+              </div>
+            </a>
+            <a href="mailto:hallo@gd3-diagnose.de"
+              className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10 hover:ring-accent-blue/40 transition">
+              <Mail className="size-5 text-accent-blue" />
+              <div className="flex flex-col">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">E-Mail</span>
+                <span className="text-sm font-medium">hallo@gd3-diagnose.de</span>
+              </div>
+            </a>
+            <div className="flex items-center gap-4 p-4 bg-background rounded-md ring-1 ring-white/10">
+              <MapPin className="size-5 text-accent-blue" />
+              <div className="flex flex-col">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Standort</span>
+                <span className="text-sm font-medium">Würzburg, Bayern</span>
               </div>
             </div>
           </div>
-          <div className="mt-24 pt-8 border-t border-hairline flex justify-between items-center">
-            <span className="text-[10px] font-mono text-zinc-600">
-              © 2024 GD3 TECHNOLOGIES
+        </div>
+        <form onSubmit={handleSubmit} className="bg-background p-8 rounded-[min(1vw,12px)] ring-1 ring-white/10 flex flex-col gap-5 h-fit">
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Name</span>
+            <input
+              name="name" required maxLength={100}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60"
+              placeholder="Max Mustermann"
+            />
+          </label>
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Fahrzeug</span>
+            <input
+              name="car" required maxLength={120}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60"
+              placeholder="z.B. Audi A4 B9 2018"
+            />
+          </label>
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Nachricht</span>
+            <textarea
+              name="message" required maxLength={1000} rows={4}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60 resize-none"
+              placeholder="Welche Codierung oder Diagnose wünschen Sie?"
+            />
+          </label>
+          <button type="submit" className="bg-foreground text-background px-5 py-3 rounded-sm font-medium text-sm hover:bg-zinc-200 transition-colors flex items-center justify-center gap-2">
+            <MessageCircleMore className="size-4" />
+            Via WhatsApp senden
+          </button>
+          {sent && (
+            <p className="text-xs font-mono text-[var(--signal)] uppercase tracking-widest text-center">
+              ✓ WhatsApp geöffnet — Nachricht abschicken
+            </p>
+          )}
+        </form>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="py-16 bg-background border-t border-hairline">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex flex-col lg:flex-row justify-between gap-12">
+          <div className="flex flex-col gap-4 max-w-[35ch]">
+            <span className="font-mono text-sm font-medium">
+              GD3 <span className="text-accent-blue">//</span> FAHRZEUGTECHNIK
             </span>
-            <span className="text-[10px] font-mono text-zinc-600">
-              49.7913° N, 9.9533° E
-            </span>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und
+              Seat in Würzburg & Umgebung.
+            </p>
+            <div className="flex items-center gap-2 pt-2 text-xs text-muted-foreground">
+              <Shield className="size-3 text-accent-blue" /> Backup garantiert
+              <span className="text-zinc-700">·</span>
+              <Clock className="size-3 text-accent-blue" /> 48h Termine
+            </div>
+          </div>
+          <div className="flex flex-col gap-3">
+            <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Kontakt</span>
+            <a href="mailto:hallo@gd3-diagnose.de" className="text-sm hover:text-accent-blue transition-colors">hallo@gd3-diagnose.de</a>
+            <a href="tel:+4900000000000" className="text-sm hover:text-accent-blue transition-colors">+49 000 0000000</a>
+            <span className="text-sm text-muted-foreground">Würzburg, DE</span>
+          </div>
+          <div className="flex flex-col gap-3">
+            <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Rechtliches</span>
+            <a href="#" className="text-xs text-muted-foreground hover:text-foreground">Impressum</a>
+            <a href="#" className="text-xs text-muted-foreground hover:text-foreground">Datenschutz</a>
+            <a href="#" className="text-xs text-muted-foreground hover:text-foreground">AGB</a>
           </div>
         </div>
-      </footer>
+        <div className="mt-12 pt-6 border-t border-hairline flex flex-wrap justify-between items-center gap-2">
+          <span className="text-[10px] font-mono text-zinc-600">© 2026 GD3 FAHRZEUGTECHNIK</span>
+          <span className="text-[10px] font-mono text-zinc-600">49.7913° N · 9.9533° E</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function SectionHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="font-mono text-xs text-accent-blue uppercase tracking-widest">{eyebrow}</span>
+      <h2 className="text-3xl md:text-4xl font-medium text-balance max-w-[28ch] tracking-tight">{title}</h2>
     </div>
   );
 }
