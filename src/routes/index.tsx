@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import heroImage from "@/assets/diagnostic-hero.jpg";
 import logoImage from "@/assets/gd3-logo.jpeg";
+import vcdsBg1 from "@/assets/vcds-bg-1.jpg";
+import vcdsBg2 from "@/assets/vcds-bg-2.jpg";
 import {
   Activity,
   Wrench,
@@ -17,6 +19,8 @@ import {
   Mail,
   ChevronDown,
   Check,
+  Sun,
+  Moon,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -176,6 +180,7 @@ function Navigation() {
           </div>
         </div>
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <span className="text-[10px] font-mono text-muted-foreground uppercase hidden sm:inline">
             Würzburg DE
           </span>
@@ -186,13 +191,46 @@ function Navigation() {
   );
 }
 
+function ThemeToggle() {
+  const [isLight, setIsLight] = useState(false);
+  useEffect(() => {
+    setIsLight(document.documentElement.classList.contains("light"));
+  }, []);
+  const toggle = () => {
+    const next = !isLight;
+    setIsLight(next);
+    document.documentElement.classList.toggle("light", next);
+    try {
+      localStorage.setItem("gd3-theme", next ? "light" : "dark");
+    } catch {}
+  };
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Theme umschalten"
+      className="size-8 inline-flex items-center justify-center rounded-full bg-surface ring-1 ring-[var(--hairline-strong)] hover:bg-surface-elevated transition-colors"
+    >
+      {isLight ? <Moon className="size-3.5" /> : <Sun className="size-3.5" />}
+    </button>
+  );
+}
+
 function Hero() {
   return (
     <section id="top" className="relative pt-24 pb-20 overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--accent-blue)_8%,transparent),transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0">
+        <img
+          src={vcdsBg1}
+          alt=""
+          aria-hidden
+          className="w-full h-full object-cover opacity-25"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--overlay-scrim),var(--background)_85%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--accent-blue)_18%,transparent),transparent_55%)]" />
+      </div>
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="flex flex-col items-start gap-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface ring-1 ring-white/10 rounded-full">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-surface ring-1 ring-[var(--hairline-strong)] rounded-full">
             <div className="size-1.5 rounded-full bg-[var(--signal)] animate-pulse" />
             <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
               VCDS · VAG-Spezialist · Würzburg
@@ -203,7 +241,7 @@ function Hero() {
             <span className="text-accent-blue">Auto Programmierung</span>{" "}
             <span className="text-muted-foreground">in Würzburg.</span>
           </h1>
-          <p className="text-muted-foreground text-lg max-w-[60ch] text-pretty">
+          <p className="text-foreground/80 text-lg max-w-[60ch] text-pretty">
             Diagnose, Codierung und Freischaltung versteckter Funktionen für
             VW, Audi, Skoda und Seat. Persönlich, transparent und mit
             originaler VCDS-Hardware.
@@ -211,14 +249,14 @@ function Hero() {
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
               href="#contact"
-              className="bg-foreground text-background px-5 py-3 rounded-sm font-medium text-sm hover:bg-zinc-200 transition-colors flex items-center gap-2"
+              className="bg-foreground text-background px-5 py-3 rounded-sm font-medium text-sm hover:opacity-90 transition-opacity flex items-center gap-2"
             >
               Termin buchen
-              <span className="text-muted-foreground">→</span>
+              <span className="opacity-60">→</span>
             </a>
             <a
               href="#services"
-              className="bg-surface text-foreground px-5 py-3 rounded-sm font-medium text-sm ring-1 ring-white/10 hover:bg-surface-elevated transition-colors"
+              className="bg-surface text-foreground px-5 py-3 rounded-sm font-medium text-sm ring-1 ring-[var(--hairline-strong)] hover:bg-surface-elevated transition-colors"
             >
               Leistungen ansehen
             </a>
@@ -253,10 +291,14 @@ function FeatureImage() {
 
 function Services() {
   return (
-    <section id="services" className="py-24 bg-surface/40 border-y border-hairline">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="services" className="relative py-24 border-y border-hairline overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={vcdsBg2} alt="" aria-hidden className="w-full h-full object-cover opacity-15" loading="lazy" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,var(--background),color-mix(in_oklab,var(--background)_80%,transparent),var(--background))]" />
+      </div>
+      <div className="max-w-6xl mx-auto px-6 relative">
         <SectionHeader eyebrow="Leistungen" title="Was wir für Ihr Fahrzeug tun." />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 ring-1 ring-white/5 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--hairline-strong)] ring-1 ring-hairline mt-12">
           {services.map((s) => {
             const Icon = s.icon;
             return (
