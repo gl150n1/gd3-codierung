@@ -480,9 +480,12 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col lg:flex-row justify-between gap-12">
           <div className="flex flex-col gap-4 max-w-[35ch]">
-            <span className="font-mono text-sm font-medium">
-              GD3 <span className="text-accent-blue">//</span> FAHRZEUGTECHNIK
-            </span>
+            <div className="flex items-center gap-2.5">
+              <img src={logoImage} alt="GD3 Logo" className="size-10 object-contain" />
+              <span className="font-mono text-sm font-medium">
+                GD3 <span className="text-accent-blue">//</span> FAHRZEUGTECHNIK
+              </span>
+            </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
               VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und
               Seat in Würzburg & Umgebung.
