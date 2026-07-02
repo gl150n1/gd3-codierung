@@ -350,18 +350,30 @@ function About() {
             vorher genau, was passiert — und nachher genau, was geändert wurde.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-px bg-white/10 ring-1 ring-white/5 rounded-[min(1vw,12px)] overflow-hidden">
-          {[
-            ["500+", "Codierungen"],
-            ["8 J.", "VAG-Erfahrung"],
-            ["48h", "Reaktionszeit"],
-            ["100%", "Backup-Garantie"],
-          ].map(([num, label]) => (
-            <div key={label} className="bg-background p-8 flex flex-col gap-2">
-              <span className="text-3xl font-medium">{num}</span>
-              <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">{label}</span>
+        <div className="flex flex-col gap-6">
+          <div className="bg-accent-blue/10 ring-1 ring-accent-blue/20 rounded-[min(1vw,12px)] p-8 flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <MapPin className="size-5 text-accent-blue" />
+              <span className="text-sm font-mono text-accent-blue uppercase tracking-widest">Vor-Ort-Service</span>
             </div>
-          ))}
+            <p className="text-lg font-medium text-pretty leading-snug">
+              Wir kommen zu Ihnen – <span className="text-accent-blue">kostenlos</span> in Würzburg und Umgebung.
+            </p>
+            <p className="text-sm text-muted-foreground text-pretty leading-relaxed">
+              Kein Werkstattbesuch nötig. Wir führen Codierung und Diagnose direkt bei Ihnen vor Ort durch – unkompliziert, persönlich und ohne Anfahrtskosten in der Region Würzburg.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-px bg-white/10 ring-1 ring-white/5 rounded-[min(1vw,12px)] overflow-hidden">
+            {[
+              ["48h", "Reaktionszeit"],
+              ["100%", "Backup-Garantie"],
+            ].map(([num, label]) => (
+              <div key={label} className="bg-background p-8 flex flex-col gap-2">
+                <span className="text-3xl font-medium">{num}</span>
+                <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
