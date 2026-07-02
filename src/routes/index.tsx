@@ -271,6 +271,7 @@ function Hero() {
             <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Original VCDS</span>
             <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Backup vor jeder Codierung</span>
             <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Termine innerhalb 48h</span>
+            <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Kostenlos vor Ort – Würzburg &amp; Umgebung</span>
           </div>
         </div>
       </div>
