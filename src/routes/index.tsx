@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import heroImage from "@/assets/diagnostic-hero.jpg";
 import logoImage from "@/assets/gd3-logo.jpeg";
@@ -169,14 +169,20 @@ function Navigation() {
             {[
               ["Services", "#services"],
               ["Über mich", "#about"],
-              ["Vorteile", "#why"],
+              ["Preise", "/preise"],
               ["FAQ", "#faq"],
               ["Kontakt", "#contact"],
-            ].map(([label, href]) => (
-              <a key={href} href={href} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-                {label}
-              </a>
-            ))}
+            ].map(([label, href]) =>
+              href.startsWith("/") ? (
+                <Link key={href} to={href} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
+                  {label}
+                </Link>
+              ) : (
+                <a key={href} href={href} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
+                  {label}
+                </a>
+              ),
+            )}
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -546,9 +552,9 @@ function Footer() {
           </div>
           <div className="flex flex-col gap-3">
             <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Rechtliches</span>
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground">Impressum</a>
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground">Datenschutz</a>
-            <a href="#" className="text-xs text-muted-foreground hover:text-foreground">AGB</a>
+            <Link to="/preise" className="text-xs text-muted-foreground hover:text-foreground">Preise</Link>
+            <Link to="/impressum" className="text-xs text-muted-foreground hover:text-foreground">Impressum</Link>
+            <Link to="/datenschutz" className="text-xs text-muted-foreground hover:text-foreground">Datenschutz</Link>
           </div>
         </div>
         <div className="mt-12 pt-6 border-t border-hairline flex flex-wrap justify-between items-center gap-2">
