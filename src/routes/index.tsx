@@ -465,7 +465,13 @@ function Contact() {
     const car = String(data.get("car") || "").trim();
     const message = String(data.get("message") || "").trim();
     const text = `Hallo GD3,%0A%0AName: ${encodeURIComponent(name)}%0AFahrzeug: ${encodeURIComponent(car)}%0A%0A${encodeURIComponent(message)}`;
-    window.open(`https://wa.me/4915734685334?text=${text}`, "_blank");
+    const link = document.createElement("a");
+    link.href = `https://wa.me/4915734685334?text=${text}`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setSent(true);
     form.reset();
   }
