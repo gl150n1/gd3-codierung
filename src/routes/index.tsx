@@ -111,7 +111,7 @@ const services = [
 const reasons = [
   { title: "Professionelle Tools", body: "Originale VCDS-Lizenz, ODIS-fähige Hardware und kalibrierte Messtechnik." },
   { title: "Faire Preise", body: "Transparente Festpreise pro Codierung — keine versteckten Kosten." },
-  { title: "Schnelle Termine", body: "Meist innerhalb von 48 Stunden vor Ort in Würzburg." },
+  { title: "Schnelle Termine", body: "Meist innerhalb von 24 Stunden vor Ort in Würzburg." },
   { title: "Lokale Expertise", body: "Persönlicher Ansprechpartner direkt in Unterfranken." },
   { title: "Klare Kommunikation", body: "Verständliche Erklärung jeder Änderung — vor und nach der Arbeit." },
   { title: "Garantiert sicher", body: "Vollständiges Backup vor jeder Codierung. Reversibel und TÜV-konform." },
@@ -270,7 +270,7 @@ function Hero() {
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 pt-6 text-xs font-mono text-muted-foreground uppercase tracking-widest">
             <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Original VCDS</span>
             <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Backup vor jeder Codierung</span>
-            <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Termine innerhalb 48h</span>
+            <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Termine innerhalb 24h</span>
             <span className="flex items-center gap-2"><Check className="size-3 text-accent-blue" /> Kostenlos vor Ort – Würzburg &amp; Umgebung</span>
           </div>
         </div>
@@ -365,7 +365,7 @@ function About() {
           </div>
           <div className="grid grid-cols-2 gap-px bg-white/10 ring-1 ring-white/5 rounded-[min(1vw,12px)] overflow-hidden">
             {[
-              ["48h", "Reaktionszeit"],
+              ["24h", "Reaktionszeit"],
               ["100%", "Backup-Garantie"],
             ].map(([num, label]) => (
               <div key={label} className="bg-background p-8 flex flex-col gap-2">
@@ -554,7 +554,7 @@ function Footer() {
             <div className="flex items-center gap-2 pt-2 text-xs text-muted-foreground">
               <Shield className="size-3 text-accent-blue" /> Backup garantiert
               <span className="text-zinc-700">·</span>
-              <Clock className="size-3 text-accent-blue" /> 48h Termine
+              <Clock className="size-3 text-accent-blue" /> 24h Termine
             </div>
           </div>
           <div className="flex flex-col gap-3">
