@@ -152,7 +152,7 @@ function Preise() {
             {[
               "Backup vor jeder Codierung",
               "Originale VCDS-Lizenz",
-              "Termine meist innerhalb 48h",
+              "Termine meist innerhalb 24h",
             ].map((t) => (
               <div key={t} className="flex items-center gap-3 p-5 bg-surface/40 ring-1 ring-hairline rounded-sm">
                 <Check className="size-4 text-accent-blue" />
