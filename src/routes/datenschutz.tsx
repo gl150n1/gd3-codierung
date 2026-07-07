@@ -3,8 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({
     meta: [
-      { title: "Datenschutzerklärung — GD3 Fahrzeugtechnik Würzburg" },
-      { name: "description", content: "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten bei GD3 Fahrzeugtechnik in Würzburg." },
+      { title: "Datenschutzerklärung — GD3 Codierung Würzburg" },
+      { name: "description", content: "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten bei GD3 Codierung in Würzburg." },
       { name: "robots", content: "index,follow" },
     ],
     links: [{ rel: "canonical", href: "/datenschutz" }],
@@ -43,7 +43,7 @@ function Datenschutz() {
         <Section title="1. Verantwortlicher">
           <p>
             Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
-            <span className="text-foreground">Glison Doci — GD3 Fahrzeugtechnik</span><br />
+            <span className="text-foreground">Glison Doci — GD3 Codierung</span><br />
             Klara-Oppenheimer-Weg 39, 97074 Würzburg<br />
             Telefon: +49 1573 4685334 · E-Mail: gd3.codierung@gmail.com
           </p>
@@ -107,7 +107,7 @@ function Datenschutz() {
       </main>
       <footer className="border-t border-hairline py-8">
         <div className="max-w-4xl mx-auto px-6 flex justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-          <span>© 2026 GD3 Fahrzeugtechnik</span>
+          <span>© 2026 GD3 Codierung</span>
           <Link to="/impressum" className="hover:text-foreground">Impressum</Link>
         </div>
       </footer>
