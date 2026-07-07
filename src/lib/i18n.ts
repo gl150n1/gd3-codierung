@@ -136,7 +136,7 @@ const dict = {
       waCar: "Fahrzeug",
     },
     footer: {
-      brand: "FAHRZEUGTECHNIK",
+      brand: "CODIERUNG",
       desc: "VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und Seat in Würzburg & Umgebung.",
       backup: "Backup garantiert",
       appt: "24h Termine",
@@ -145,7 +145,7 @@ const dict = {
       prices: "Preise",
       imprint: "Impressum",
       privacy: "Datenschutz",
-      copyright: "© 2026 GD3 FAHRZEUGTECHNIK",
+      copyright: "© 2026 GD3 CODIERUNG",
     },
     preise: {
       metaTitle: "Preise — VCDS Coding & Fahrzeugoptimierung Würzburg | GD3",
@@ -157,7 +157,7 @@ const dict = {
       inquire: "Anfragen",
       waPrefix: "Hallo GD3, ich interessiere mich für:",
       badges: ["Backup vor jeder Codierung", "Originale VCDS-Lizenz", "Termine meist innerhalb 24h"],
-      footerCopy: "© 2026 GD3 Fahrzeugtechnik · Würzburg",
+      footerCopy: "© 2026 GD3 Codierung · Würzburg",
       products: [
         { title: "VCDS Komplettauslesung", price: "20,00 €", body: "Vollständiges Auslesen aller Steuergeräte, ausführlicher Fehlerspeicher-Report und Beratung zu sinnvollen nächsten Schritten.", tags: ["Diagnose", "Report"] },
         { title: "Hidden Features Freischaltung", price: "ab 25,00 €", body: "Freischaltung versteckter Komfortfunktionen: Coming/Leaving-Home, Abbiegelicht, Spurhalter-Erinnerung, Menüsprachen u. v. m.", tags: ["Coding"] },
@@ -263,7 +263,7 @@ const dict = {
       waCar: "Vehicle",
     },
     footer: {
-      brand: "VEHICLE TECH",
+      brand: "CODING",
       desc: "VCDS coding, diagnostics and programming for VW, Audi, Skoda and Seat in Würzburg & surroundings.",
       backup: "Backup guaranteed",
       appt: "24h appointments",
@@ -272,7 +272,7 @@ const dict = {
       prices: "Pricing",
       imprint: "Imprint",
       privacy: "Privacy",
-      copyright: "© 2026 GD3 VEHICLE TECH",
+      copyright: "© 2026 GD3 CODING",
     },
     preise: {
       metaTitle: "Pricing — VCDS Coding & Vehicle Optimization Würzburg | GD3",
@@ -284,7 +284,7 @@ const dict = {
       inquire: "Inquire",
       waPrefix: "Hi GD3, I'm interested in:",
       badges: ["Backup before every coding", "Original VCDS licence", "Appointments usually within 24h"],
-      footerCopy: "© 2026 GD3 Vehicle Tech · Würzburg",
+      footerCopy: "© 2026 GD3 Coding · Würzburg",
       products: [
         { title: "VCDS Full Readout", price: "€20.00", body: "Complete readout of all control units, detailed fault memory report and advice on sensible next steps.", tags: ["Diagnostics", "Report"] },
         { title: "Hidden Features Unlock", price: "from €25.00", body: "Unlocking of hidden comfort features: Coming/Leaving-Home, cornering light, lane assist reminder, menu languages and more.", tags: ["Coding"] },

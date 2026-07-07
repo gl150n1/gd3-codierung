@@ -3,8 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/impressum")({
   head: () => ({
     meta: [
-      { title: "Impressum — GD3 Fahrzeugtechnik Würzburg" },
-      { name: "description", content: "Impressum und Anbieterkennzeichnung von GD3 Fahrzeugtechnik, Glison Doci, Würzburg." },
+      { title: "Impressum — GD3 Codierung Würzburg" },
+      { name: "description", content: "Impressum und Anbieterkennzeichnung von GD3 Codierung, Glison Doci, Würzburg." },
       { name: "robots", content: "index,follow" },
     ],
     links: [{ rel: "canonical", href: "/impressum" }],
@@ -35,7 +35,7 @@ function Impressum() {
           <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground">Angaben gemäß § 5 TMG</h2>
           <p className="text-base leading-relaxed">
             Glison Doci<br />
-            GD3 Fahrzeugtechnik<br />
+            GD3 Codierung<br />
             Klara-Oppenheimer-Weg 39<br />
             97074 Würzburg<br />
             Deutschland
@@ -97,7 +97,7 @@ function Impressum() {
       </main>
       <footer className="border-t border-hairline py-8">
         <div className="max-w-4xl mx-auto px-6 flex justify-between text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
-          <span>© 2026 GD3 Fahrzeugtechnik</span>
+          <span>© 2026 GD3 Codierung</span>
           <Link to="/datenschutz" className="hover:text-foreground">Datenschutz</Link>
         </div>
       </footer>

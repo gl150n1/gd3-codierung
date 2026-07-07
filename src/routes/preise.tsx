@@ -13,7 +13,7 @@ export const Route = createFileRoute("/preise")({
           "Transparente Festpreise für VCDS Codierung, Feature-Freischaltung, Retrofit und Diagnose in Würzburg. VW, Audi, Skoda, Seat.",
       },
       { name: "robots", content: "index,follow" },
-      { property: "og:title", content: "Preise — GD3 Fahrzeugtechnik Würzburg" },
+      { property: "og:title", content: "Preise — GD3 Codierung Würzburg" },
       { property: "og:description", content: "Festpreise für Codierung, Retrofit und Diagnose in Würzburg." },
       { property: "og:type", content: "website" },
     ],
