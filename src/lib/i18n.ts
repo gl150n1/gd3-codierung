@@ -228,6 +228,9 @@ const dict = {
       loc: "Würzburg DE",
       backHome: "← Home",
     },
+    banner: {
+      text: "Free on-site service in Würzburg & surroundings — we come to you!",
+    },
     hero: {
       badge: "VCDS · VAG Specialist · Würzburg",
       title1: "Professional VCDS coding &",
