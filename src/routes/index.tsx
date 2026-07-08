@@ -25,6 +25,41 @@ import {
 import { useT } from "@/lib/i18n";
 import { LangToggle } from "@/components/lang-toggle";
 
+const VEHICLE_DATA: Record<string, string[]> = {
+  Audi: [
+    "A1", "A3", "A4", "A5", "A6", "A7", "A8",
+    "Q2", "Q3", "Q5", "Q7", "Q8",
+    "TT", "R8",
+    "e-tron", "e-tron GT",
+    "RS3", "RS4", "RS5", "RS6", "RS7",
+    "S3", "S4", "S5", "S6", "S7", "S8",
+  ],
+  Porsche: [
+    "911", "718 Boxster", "718 Cayman",
+    "Panamera", "Cayenne", "Macan", "Taycan",
+  ],
+  Seat: [
+    "Ibiza", "Leon", "Toledo",
+    "Arona", "Ateca", "Tarraco",
+    "Cupra Formentor", "Cupra Leon", "Cupra Born",
+    "Alhambra", "Mii",
+  ],
+  Skoda: [
+    "Fabia", "Octavia", "Superb", "Scala",
+    "Kamiq", "Karoq", "Kodiaq", "Enyaq",
+    "Citigo", "Rapid", "Yeti",
+  ],
+  VW: [
+    "Polo", "Golf", "Passat", "Jetta", "Bora",
+    "Tiguan", "Touareg", "Arteon",
+    "T-Roc", "T-Cross", "Taigo",
+    "ID.3", "ID.4", "ID.5", "ID.7", "ID.Buzz",
+    "Caddy", "Transporter",
+    "Sharan", "Touran",
+    "Beetle", "Scirocco", "Up!", "Phaeton",
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -366,15 +401,19 @@ function FAQ() {
 function Contact() {
   const t = useT();
   const [sent, setSent] = useState(false);
+  const [brand, setBrand] = useState("");
+  const [model, setModel] = useState("");
+  const brands = Object.keys(VEHICLE_DATA);
+  const models = brand ? VEHICLE_DATA[brand] : [];
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
-    const car = String(data.get("car") || "").trim();
     const message = String(data.get("message") || "").trim();
-    const text = `${t.contact.waHello},%0A%0A${t.contact.waName}: ${encodeURIComponent(name)}%0A${t.contact.waCar}: ${encodeURIComponent(car)}%0A%0A${encodeURIComponent(message)}`;
+    const carInfo = `${brand} ${model}`.trim();
+    const text = `${t.contact.waHello},%0A%0A${t.contact.waName}: ${encodeURIComponent(name)}%0A${t.contact.waCar}: ${encodeURIComponent(carInfo)}%0A%0A${encodeURIComponent(message)}`;
     const link = document.createElement("a");
     link.href = `https://wa.me/4915734685334?text=${text}`;
     link.target = "_blank";
@@ -383,6 +422,8 @@ function Contact() {
     link.click();
     document.body.removeChild(link);
     setSent(true);
+    setBrand("");
+    setModel("");
     form.reset();
   }
 
@@ -434,10 +475,35 @@ function Contact() {
               placeholder={t.contact.pName} />
           </label>
           <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fCar}</span>
-            <input name="car" required maxLength={120}
-              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60"
-              placeholder={t.contact.pCar} />
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fBrand}</span>
+            <select
+              name="brand"
+              required
+              value={brand}
+              onChange={(e) => { setBrand(e.target.value); setModel(""); }}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60 appearance-none"
+            >
+              <option value="" disabled>{t.contact.pBrand}</option>
+              {brands.map((b) => (
+                <option key={b} value={b}>{b}</option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fModel}</span>
+            <select
+              name="model"
+              required
+              value={model}
+              disabled={!brand}
+              onChange={(e) => setModel(e.target.value)}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60 appearance-none disabled:opacity-40"
+            >
+              <option value="" disabled>{t.contact.pModel}</option>
+              {models.map((m) => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
           </label>
           <label className="flex flex-col gap-2">
             <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fMsg}</span>
