@@ -25,6 +25,41 @@ import {
 import { useT } from "@/lib/i18n";
 import { LangToggle } from "@/components/lang-toggle";
 
+const VEHICLE_DATA: Record<string, string[]> = {
+  Audi: [
+    "A1", "A3", "A4", "A5", "A6", "A7", "A8",
+    "Q2", "Q3", "Q5", "Q7", "Q8",
+    "TT", "R8",
+    "e-tron", "e-tron GT",
+    "RS3", "RS4", "RS5", "RS6", "RS7",
+    "S3", "S4", "S5", "S6", "S7", "S8",
+  ],
+  Porsche: [
+    "911", "718 Boxster", "718 Cayman",
+    "Panamera", "Cayenne", "Macan", "Taycan",
+  ],
+  Seat: [
+    "Ibiza", "Leon", "Toledo",
+    "Arona", "Ateca", "Tarraco",
+    "Cupra Formentor", "Cupra Leon", "Cupra Born",
+    "Alhambra", "Mii",
+  ],
+  Skoda: [
+    "Fabia", "Octavia", "Superb", "Scala",
+    "Kamiq", "Karoq", "Kodiaq", "Enyaq",
+    "Citigo", "Rapid", "Yeti",
+  ],
+  VW: [
+    "Polo", "Golf", "Passat", "Jetta", "Bora",
+    "Tiguan", "Touareg", "Arteon",
+    "T-Roc", "T-Cross", "Taigo",
+    "ID.3", "ID.4", "ID.5", "ID.7", "ID.Buzz",
+    "Caddy", "Transporter",
+    "Sharan", "Touran",
+    "Beetle", "Scirocco", "Up!", "Phaeton",
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
