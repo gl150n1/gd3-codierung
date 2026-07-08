@@ -401,15 +401,19 @@ function FAQ() {
 function Contact() {
   const t = useT();
   const [sent, setSent] = useState(false);
+  const [brand, setBrand] = useState("");
+  const [model, setModel] = useState("");
+  const brands = Object.keys(VEHICLE_DATA);
+  const models = brand ? VEHICLE_DATA[brand] : [];
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = String(data.get("name") || "").trim();
-    const car = String(data.get("car") || "").trim();
     const message = String(data.get("message") || "").trim();
-    const text = `${t.contact.waHello},%0A%0A${t.contact.waName}: ${encodeURIComponent(name)}%0A${t.contact.waCar}: ${encodeURIComponent(car)}%0A%0A${encodeURIComponent(message)}`;
+    const carInfo = `${brand} ${model}`.trim();
+    const text = `${t.contact.waHello},%0A%0A${t.contact.waName}: ${encodeURIComponent(name)}%0A${t.contact.waCar}: ${encodeURIComponent(carInfo)}%0A%0A${encodeURIComponent(message)}`;
     const link = document.createElement("a");
     link.href = `https://wa.me/4915734685334?text=${text}`;
     link.target = "_blank";
@@ -418,6 +422,8 @@ function Contact() {
     link.click();
     document.body.removeChild(link);
     setSent(true);
+    setBrand("");
+    setModel("");
     form.reset();
   }
 
@@ -469,10 +475,35 @@ function Contact() {
               placeholder={t.contact.pName} />
           </label>
           <label className="flex flex-col gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fCar}</span>
-            <input name="car" required maxLength={120}
-              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60"
-              placeholder={t.contact.pCar} />
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fBrand}</span>
+            <select
+              name="brand"
+              required
+              value={brand}
+              onChange={(e) => { setBrand(e.target.value); setModel(""); }}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60 appearance-none"
+            >
+              <option value="" disabled>{t.contact.pBrand}</option>
+              {brands.map((b) => (
+                <option key={b} value={b}>{b}</option>
+              ))}
+            </select>
+          </label>
+          <label className="flex flex-col gap-2">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fModel}</span>
+            <select
+              name="model"
+              required
+              value={model}
+              disabled={!brand}
+              onChange={(e) => setModel(e.target.value)}
+              className="bg-surface ring-1 ring-white/10 rounded-sm px-3 py-2 text-sm focus:outline-none focus:ring-accent-blue/60 appearance-none disabled:opacity-40"
+            >
+              <option value="" disabled>{t.contact.pModel}</option>
+              {models.map((m) => (
+                <option key={m} value={m}>{m}</option>
+              ))}
+            </select>
           </label>
           <label className="flex flex-col gap-2">
             <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{t.contact.fMsg}</span>
