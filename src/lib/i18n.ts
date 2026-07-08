@@ -53,6 +53,9 @@ const dict = {
       loc: "Würzburg DE",
       backHome: "← Startseite",
     },
+    banner: {
+      text: "Kostenloser Vor-Ort-Service in Würzburg & Umgebung — wir kommen zu Ihnen!",
+    },
     hero: {
       badge: "VCDS · VAG-Spezialist · Würzburg",
       title1: "Professionelles VCDS Coding &",
