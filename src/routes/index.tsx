@@ -126,10 +126,25 @@ function WhatsAppFloat() {
   );
 }
 
+function Banner() {
+  const t = useT();
+  return (
+    <div className="bg-accent-blue/10 ring-1 ring-accent-blue/20 border-l-4 border-accent-blue">
+      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center gap-3">
+        <MapPin className="size-4 text-accent-blue shrink-0" />
+        <span className="text-sm font-medium text-foreground">
+          {t.banner.text}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <div className="bg-background text-foreground font-sans">
       <Navigation />
+      <Banner />
       <Hero />
       <FeatureImage />
       <Services />
