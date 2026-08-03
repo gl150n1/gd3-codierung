@@ -167,7 +167,7 @@ const dict = {
       metaDesc: "Informationen zum Datenschutz und zur Verarbeitung personenbezogener Daten bei GD3 Codierung in Würzburg.",
       title: "Datenschutzerklärung",
       sec1Title: "1. Verantwortlicher",
-      sec1Text: "Verantwortlich für die Datenverarbeitung auf dieser Website ist:\nGlison Doci — GD3 Codierung\nKlara-Oppenheimer-Weg 39, 97074 Würzburg\nTelefon: +49 1573 4685334 · E-Mail: gd3.codierung@gmail.com",
+      sec1Text: "Verantwortlich für die Datenverarbeitung auf dieser Website ist:\nGlison Doci — GD3 Codierung\n97074 Würzburg\nTelefon: +49 1573 4685334 · E-Mail: gd3.codierung@gmail.com",
       sec2Title: "2. Allgemeine Hinweise",
       sec2Text: "Die Nutzung unserer Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten erhoben werden, erfolgt dies stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben.",
       sec3Title: "3. Server-Logfiles",
