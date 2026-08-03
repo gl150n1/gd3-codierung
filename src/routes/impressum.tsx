@@ -45,7 +45,6 @@ function Impressum() {
           <p className="text-base leading-relaxed">
             Glison Doci<br />
             GD3 Codierung<br />
-            Klara-Oppenheimer-Weg 39<br />
             97074 Würzburg<br />
             Deutschland
           </p>
@@ -68,7 +67,6 @@ function Impressum() {
           <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground">{t.impressum.sectionContent}</h2>
           <p className="text-base leading-relaxed">
             Glison Doci<br />
-            Klara-Oppenheimer-Weg 39<br />
             97074 Würzburg
           </p>
         </section>
