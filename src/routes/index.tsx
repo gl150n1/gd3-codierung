@@ -176,7 +176,7 @@ function Navigation() {
               [t.nav.faq, "#faq"],
               [t.nav.contact, "#contact"],
             ] as const).map(([label, href]) =>
-              href.startsWith("/") ? (
+              href === "/preise" ? (
                 <Link key={href} to={href} className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
                   {label}
                 </Link>
