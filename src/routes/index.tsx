@@ -63,18 +63,18 @@ const VEHICLE_DATA: Record<string, string[]> = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "VCDS Coding & Auto Programmierung Würzburg — GD3 Diagnose" },
+      { title: "VCDS Coding & Auto Programmierung Würzburg & Berlin — GD3 Diagnose" },
       {
         name: "description",
         content:
-          "VCDS Coding, Diagnose & Freischaltung versteckter Funktionen in Würzburg. Spezialist für VW, Audi, Skoda, Seat. Retrofit-Codierung, Fehleranalyse, faire Preise.",
+          "VCDS Coding, Diagnose & Freischaltung versteckter Funktionen in Würzburg & Berlin. Spezialist für VW, Audi, Skoda, Seat. Retrofit-Codierung, Fehleranalyse, faire Preise.",
       },
-      { name: "keywords", content: "VCDS Würzburg, Auto coding Würzburg, Audi coding Würzburg, VW Diagnose Würzburg, Skoda Codierung, Seat Codierung, Retrofit Würzburg" },
-      { property: "og:title", content: "VCDS Coding & Auto Programmierung Würzburg — GD3" },
+      { name: "keywords", content: "VCDS Würzburg, VCDS Berlin, Auto coding Würzburg, Auto coding Berlin, Audi coding Würzburg, Audi coding Berlin, VW Diagnose Würzburg, VW Diagnose Berlin, Skoda Codierung, Seat Codierung, Retrofit Würzburg, Retrofit Berlin" },
+      { property: "og:title", content: "VCDS Coding & Auto Programmierung Würzburg & Berlin — GD3" },
       {
         property: "og:description",
         content:
-          "Professionelle Fahrzeugdiagnose, VCDS Codierung und Feature-Freischaltung für VW, Audi, Skoda, Seat in Würzburg.",
+          "Professionelle Fahrzeugdiagnose, VCDS Codierung und Feature-Freischaltung für VW, Audi, Skoda, Seat in Würzburg & Berlin.",
       },
       { property: "og:image", content: heroImage },
       { property: "og:type", content: "website" },
@@ -90,8 +90,8 @@ export const Route = createFileRoute("/")({
           "@type": "AutoRepair",
           name: "GD3 Fahrzeugdiagnose",
           description:
-            "VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und Seat in Würzburg.",
-          areaServed: "Würzburg",
+            "VCDS Coding, Diagnose und Programmierung für VW, Audi, Skoda und Seat in Würzburg & Berlin.",
+          areaServed: ["Würzburg", "Berlin"],
           address: {
             "@type": "PostalAddress",
             addressLocality: "Würzburg",
@@ -565,7 +565,7 @@ function Footer() {
             <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">{t.footer.contact}</span>
             <a href="mailto:gd3.codierung@gmail.com" className="text-sm hover:text-accent-blue transition-colors">gd3.codierung@gmail.com</a>
             <a href="tel:+4915734685334" className="text-sm hover:text-accent-blue transition-colors">+49 1573 4685334</a>
-            <span className="text-sm text-muted-foreground">Würzburg, DE</span>
+            <span className="text-sm text-muted-foreground">Würzburg & Berlin, DE</span>
           </div>
           <div className="flex flex-col gap-3">
             <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">{t.footer.legal}</span>

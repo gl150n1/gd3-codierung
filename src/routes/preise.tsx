@@ -6,15 +6,15 @@ import { LangToggle } from "@/components/lang-toggle";
 export const Route = createFileRoute("/preise")({
   head: () => ({
     meta: [
-      { title: "Preise — VCDS Coding & Fahrzeugoptimierung Würzburg | GD3" },
+      { title: "Preise — VCDS Coding & Fahrzeugoptimierung Würzburg & Berlin | GD3" },
       {
         name: "description",
         content:
-          "Transparente Festpreise für VCDS Codierung, Feature-Freischaltung, Retrofit und Diagnose in Würzburg. VW, Audi, Skoda, Seat.",
+          "Transparente Festpreise für VCDS Codierung, Feature-Freischaltung, Retrofit und Diagnose in Würzburg & Berlin. VW, Audi, Skoda, Seat.",
       },
       { name: "robots", content: "index,follow" },
-      { property: "og:title", content: "Preise — GD3 Codierung Würzburg" },
-      { property: "og:description", content: "Festpreise für Codierung, Retrofit und Diagnose in Würzburg." },
+      { property: "og:title", content: "Preise — GD3 Codierung Würzburg & Berlin" },
+      { property: "og:description", content: "Festpreise für Codierung, Retrofit und Diagnose in Würzburg & Berlin." },
       { property: "og:type", content: "website" },
     ],
     links: [{ rel: "canonical", href: "/preise" }],

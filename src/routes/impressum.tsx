@@ -51,6 +51,11 @@ function Impressum() {
         </section>
 
         <section className="flex flex-col gap-3">
+          <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground">{t.impressum.sectionArea}</h2>
+          <p className="text-base leading-relaxed">{t.impressum.areaText}</p>
+        </section>
+
+        <section className="flex flex-col gap-3">
           <h2 className="text-sm font-mono uppercase tracking-widest text-muted-foreground">{t.impressum.sectionContact}</h2>
           <p className="text-base leading-relaxed">
             Telefon: <a href="tel:+4915734685334" className="text-accent-blue hover:underline">+49 1573 4685334</a><br />
